@@ -107,7 +107,7 @@ function M.setup(cfg_)
   local uuid_handle = io.popen[[uuidgen|sed 's/.*/&/']]
   local uuid = uuid_handle:read("*a")
   uuid_handle:close()
-  Cfg.runner_name = 'vim-cmd' .. uuid
+  Cfg.runner_name = Cfg.runner_name or 'vim-cmd' .. uuid
   Cfg.run_cmd = Cfg.run_cmd or {'send-text', '--match=title:' .. Cfg.runner_name}
   Cfg.kill_cmd = Cfg.kill_cmd or {'close-window', '--match=title:' .. Cfg.runner_name}
   if Cfg.use_keymaps ~= nil then
